@@ -4,9 +4,14 @@
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    {% for task_obj in task %}
-    <p>{{task_obj.title}} | {{task_obj.student.fullname}}</p>
-    {% endfor %}
+    <h1>student pages:</h1>
+        <ul>
+            {% for student in students %}
+            <li>{{student.fullname}}:{{student.score}}</li>
+            {% endfor %}
+        </ul>
+    <h2>created student:</h2>
+    <p>{{student_add}}</p>
     <a href="https://example.com">link1</a>
     <h2>ostad</h2>
     <p>my teacher name is javad</p>
