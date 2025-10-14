@@ -18,3 +18,5 @@ class Task(models.Model):
 class TypeCategory(models.Model):
     title = models.CharField(max_length=256)
     tasks = models.ManyToManyField(Task)
+    def __str__(self):
+        return self.title
