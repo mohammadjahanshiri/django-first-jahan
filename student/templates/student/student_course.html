@@ -4,10 +4,15 @@
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <h1>student_1 taskes:</h1>
-      {% for task in task_student1 %}
-        <li>{{task.title}}</li>
-      {% endfor %}
+    <h1>student_course pages:</h1>
+        <ul>
+            {% for course in students %}
+            <li>{{course.title}}</li>
+            {% for courses in course.students.all %}
+                <span>{{courses.fullname}} ..</span>
+            {% endfor %}
+            {% endfor %}
+        </ul>
     <h2>created student:</h2>
     <p>{{student_add}}</p>
     <a href="https://example.com">link1</a>

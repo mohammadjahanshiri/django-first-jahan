@@ -5,11 +5,9 @@
   </head>
   <body>
     <h1>courses::</h1>
-        <ul>
-            {% for course in all_courses %}
-            <li>{{course.title}}</li>
-            {% endfor %}
-        </ul>
+        {% for course in all_courses %}
+          <li>{{course.title}}</li>
+        {% endfor %}
     <h2>created student:</h2>
     <p>{{student_add}}</p>
     <a href="https://example.com">link1</a>

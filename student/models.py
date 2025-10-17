@@ -16,6 +16,13 @@ class Course(models.Model):
     description = models.TextField()
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
-    students = models.ManyToManyField(Students)
+    students = models.ManyToManyField(Students , related_name="courses")
     def __str__(self):
         return self.title
+    
+class Profile(models.Model):
+    bio = models.TextField()
+    avatar = models.CharField(max_length=128)
+    student = models.OneToOneField(Students ,on_delete=models.CASCADE ,related_name="profile")
+    def __str__(self):
+        return self.bio

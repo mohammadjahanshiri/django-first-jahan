@@ -4,10 +4,18 @@
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <h1>student_1 taskes:</h1>
-      {% for task in task_student1 %}
-        <li>{{task.title}}</li>
-      {% endfor %}
+    <h1>course_student pages:</h1>
+        <ul>
+            {% for student in courses %}
+            <li>{{student.fullname}}:{{student.score}}</li>
+            {% for course in student.courses.all %}
+                <span>{{course.title}}</span>
+            {% endfor %}
+            {% for task in student.tasks.all %}
+            <span>{{task.title}}</span>
+            {% endfor %}
+            {% endfor %}
+        </ul>
     <h2>created student:</h2>
     <p>{{student_add}}</p>
     <a href="https://example.com">link1</a>
