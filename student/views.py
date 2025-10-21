@@ -40,3 +40,21 @@ def course_students(request):
     context = {"courses" : course}
     html_file = "student/course_students.html"
     return render(request , html_file , context)
+
+def student_score(request , scor_e):
+    score_filter = Students.objects.filter(score__gt=scor_e)
+    context = {"scores" : score_filter}
+    html_file = "student/score_student.html"
+    return render(request,html_file,context)
+
+def course_url_view(request , cours_e):
+    course_filter = Course.objects.filter(id=cours_e)
+    context = {"coursess" : course_filter}
+    html_file = "student/course_url_view.html"
+    return render(request , html_file , context)
+
+def student_courses_id(request , id_stu):
+    students_id = Students.objects.filter(id=id_stu)
+    context = {"student_courses" : students_id}
+    html_file = "student/id_student.html"
+    return render(request , html_file , context)

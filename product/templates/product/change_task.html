@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>My First Webpage</title>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <h1>courses detail :</h1>
+      {% for course in coursess %}
+        <li>Title: {{course.title}} | Code: {{course.code}}</li>
+        <li>student attenders:</li>
+        {% for stud in course.students.all %}
+        <li>{{stud.fullname}}</li>
+      {% endfor %}
+      {% endfor %}
+    <h2>created student:</h2>
+    <p>{{student_add}}</p>
+    <a href="https://example.com">link1</a>
+    <h2>ostad</h2>
+    <p>my teacher name is javad</p>
+    <a href="https://example.com">link2</a>
+    <h3>students</h3>
+    <p>student1 name is kasra</p>
+    <a href="https://example.com">link3</a>
+    <h3>class</h3>
+    <p>python</p>
+    <h5>Welcome to My Page</h5>
+    <h6>Welcome to My Page</h6>
+    <p>This is a paragraph.</p>
+    <a href="https://example.com">Visit Example</a>
+    <br>
+    <br>
+    <a href="https://example.com">Visit Example</a>
+  </body>
+</html>

@@ -25,3 +25,9 @@ def list_task(request):
 
     list4 = {"task" : list1}
     return render(request , "product/new.html" , list4)
+
+def change_done(request , id_task):
+    task_id = Task.objects.filter(id=id_task)
+    context = {"student_courses" : task_id}
+    html_file = "product/change_task.html"
+    return render(request , html_file , context)
