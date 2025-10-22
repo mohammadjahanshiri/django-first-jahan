@@ -1,15 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
 from student.models import Students , Course
 from product.models import Task
-
+from student.forms import StudentForm
 
 def student_view(request):
-    create1 = Students.objects.create(fullname="mohammad" , username="mohammad" , score=16)
-    all_students = Students.objects.filter(score__gt=15)
-    context = {"students": all_students ,
-               "student_add" : create1}
+    form = StudentForm()
     html_file = "student/all_student.html"
-    return render (request , html_file , context)
+    if request.method == "GET":
+        all_students = Students.objects.all()
+        context = {"students": all_students ,
+                   "form" : form}
+        return render (request , html_file , context)
+    elif request.method == "POST":
+        all_students = Students.objects.all()
+        data = request.POST
+        fullname1 = data["fullname"]
+        username1 = data["username"]
+        phone1 = data["phone_number"] 
+        student_list = Students.objects.create(fullname=fullname1 , username=username1 , phone_number=phone1 , score=0)
+        if student_list:
+            return redirect("product:home")
+        return render(request , html_file , {"form" : form , "students" : all_students})
+
 
 def add_student(request):
     create1 = Students.objects.create(fullname="mohammad" , username="mohammad" , score=16)
@@ -58,3 +70,4 @@ def student_courses_id(request , id_stu):
     context = {"student_courses" : students_id}
     html_file = "student/id_student.html"
     return render(request , html_file , context)
+

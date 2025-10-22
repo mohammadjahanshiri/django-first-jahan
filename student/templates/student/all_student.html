@@ -11,7 +11,11 @@
             {% endfor %}
         </ul>
     <h2>created student:</h2>
-    <p>{{student_add}}</p>
+    <form action={% url "student:student_list" %} method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="vorod">
+    </form>
     <a href="https://example.com">link1</a>
     <h2>ostad</h2>
     <p>my teacher name is javad</p>
