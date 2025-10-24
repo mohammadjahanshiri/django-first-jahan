@@ -4,19 +4,18 @@
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-    <h1>courses detail :</h1>
-      {% for task in tasks %}
-        <li>Title: {{task.title}} | Code: {{task.done}}</li>
-        {% for task1 in task2 %}
-        <span>{{task1.done}}</span>
-        {% endfor %}
-        <li>student attenders:</li>
-        {% for stud in task.students.all %}
-        <li>{{stud.fullname}}</li>
-      {% endfor %}
-      {% endfor %}
-    <h2>created student:</h2>
-    <p>{{student_add}}</p>
+    <h1>student pages:</h1>
+        <ul>
+            {% for student in students %}
+            <li>{{student.fullname}}:{{student.score}}</li>
+            {% endfor %}
+        </ul>
+    <h2>create student:</h2>
+    <form action={% url "product:create_task" %} method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="sakht">
+    </form>
     <a href="https://example.com">link1</a>
     <h2>ostad</h2>
     <p>my teacher name is javad</p>
