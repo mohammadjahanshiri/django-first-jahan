@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from product.models import Task
-from product.forms import TaskForm
+from product.forms import TaskForm, TaskForm2
 
 
 def index(request):
@@ -39,7 +39,7 @@ def change_done(request , id_task):
     return render(request , html_file , context)
 
 def create_task(request):
-    form = TaskForm(request.POST)
+    form = TaskForm2()
     html_file = "product/create_task.html"
     all_task = Task.objects.all()
     if request.method == "GET":
@@ -47,12 +47,15 @@ def create_task(request):
                    "form" : form}
         return render(request , html_file , context)
     elif request.method == "POST":
-        title1 =request.POST.get("title")
-        category1 = request.POST.get("category")
-        description1 = request.POST.get("description")
-        date1 = request.POST.get("date")
-        student1 = request.POST.get("student")
-        Task.objects.create(title=title1 , category=category1 , description=description1 , date=date1 , student_id=student1 )
+        # title1 =request.POST.get("title")
+        # category1 = request.POST.get("category")
+        # description1 = request.POST.get("description")
+        # date1 = request.POST.get("date")
+        # student1 = request.POST.get("student")
+        # Task.objects.create(title=title1 , category=category1 , description=description1 , date=date1 , student_id=student1 )
+        form = TaskForm2(request.POST)
+        if form.is_valid():
+            form.save()
         context1 = {"form" : form}
         return render(request , html_file , context1)
 
