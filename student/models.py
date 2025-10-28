@@ -3,8 +3,8 @@ from django.db import models
 
 class Students(models.Model):
     fullname = models.CharField(max_length=128)
-    username = models.CharField(max_length=128)
-    score = models.PositiveIntegerField()
+    username = models.CharField(max_length=128 , unique=True)
+    score = models.PositiveIntegerField(default=0)
     phone_number = models.CharField(max_length=15)
     def __str__(self):
         return self.fullname
@@ -19,6 +19,7 @@ class Course(models.Model):
     students = models.ManyToManyField(Students , related_name="courses")
     def __str__(self):
         return self.title
+
     
 class Profile(models.Model):
     bio = models.TextField()
