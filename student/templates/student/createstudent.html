@@ -10,6 +10,12 @@
             {{ form }}
             <input type="submit" value="new student">
         </form>
-    </body>
+        <a  class="btn"  href={% url "account:user_logout" %}>logout</a>
+        <a  href={% url "account:user_delete_account" %}>delete account!</a>
+         <!-- <form id="deleteform" action={% url "account:user_delete_account" %} method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn" onclick="return confirm('are you sure to delete your account?')"> Delete account</button>
+        </form>
+    </body> -->
 
 </html>
