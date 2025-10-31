@@ -87,4 +87,9 @@ class CreateProfileView(View):
             if new_prof:
                 return redirect("student:allstudent")
         return render(request , self.html_file , {"form" :self.form})
-        
+    
+class AllTeachersView(View):
+    html_file = "student/allteachers.html"
+    all_teachers = Teachers.objects.all()
+    def get(self , request):
+        return render(request , self.html_file ,{"teachers" : self.all_teachers})

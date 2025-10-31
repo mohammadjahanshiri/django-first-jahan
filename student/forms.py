@@ -6,13 +6,13 @@ class StudentForm(ModelForm):
 
     class Meta:
         model = Students
-        fields = ["fullname" , "username" , "phone_number"] 
+        fields = ["fullname" ] 
 
 class CreateStudentForm(ModelForm):
 
     class Meta:
         model = Students
-        fields = ["fullname" , "username" , "phone_number"]
+        fields = ["fullname" ]
 
         def clean_username(self):
             username = self.cleaned_data['username']

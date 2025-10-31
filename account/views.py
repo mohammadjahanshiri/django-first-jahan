@@ -48,12 +48,14 @@ class logoutView(View):
             return redirect("account:user_login")
 
 class DeleteAccountView(View):
-    def get(self , request , *args , **kwargs):
-        user = request.user
-        logout(request)
-        user.delete()
-        request.session.flush()
-        return redirect("student:student_list")
+    def get(self , request):
+        if request.user.is_authenticated:
+            try:
+                user = User.objects.get(id=request.user.id)
+                user.delete()
+                return redirect("student:student_list")
+            except:
+                return redirect("student:create_student")
 
         
             
