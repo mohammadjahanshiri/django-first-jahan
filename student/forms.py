@@ -1,6 +1,7 @@
 from django.forms import ModelForm
-from student.models import Students , Course , Profile
+from student.models import *
 from django.core.exceptions import ValidationError
+from django import forms
 
 class StudentForm(ModelForm):
 
@@ -24,10 +25,16 @@ class CreateCourseForm(ModelForm):
 
     class Meta:
         model = Course
-        fields = ["title","code","description","start_date","end_date","students"]
+        fields = ["title","code","description","start_date","end_date"]
 
 
 class CreateProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = ["bio" , "avatar" , "student"]
+
+
+class EnrollCourseForm(forms.ModelForm):
+    class Meta:
+        model = EnrollmentCourse
+        fields = ["courses"]

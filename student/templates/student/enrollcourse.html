@@ -1,0 +1,13 @@
+<html>
+    <head>
+
+    
+    </head>
+    <body>
+        <p>{{message}}</p>
+        <form action={% url "student:enroll_courses" %} method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="enroll">
+        </form>
+</html>

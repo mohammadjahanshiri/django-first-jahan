@@ -23,11 +23,6 @@ def student_view(request):
         return render(request , html_file , {"form" : form , "students" : all_students})
 
 
-def add_student(request):
-    create1 = Students.objects.create(fullname="mohammad" , username="mohammad" , score=16)
-    context = {"student_add" : create1}
-    html_fil = "student/all_student.html"
-    return render (request , html_fil , context)
 
 def task_student(request , st_id):
     task_student1 = Task.objects.filter(student_id=st_id)
@@ -35,11 +30,6 @@ def task_student(request , st_id):
     html_fil = "student/student1.html"
     return render(request , html_fil , context)
 
-def courses_view(request):
-    course1 = Course.objects.all()
-    context = {"all_courses" : course1}
-    html_file = "student/all_courses.html"
-    return render(request , html_file , context)
 
 def student_courses(request):
     students = Course.objects.all()
