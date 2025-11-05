@@ -31,7 +31,7 @@ class CreateCourseForm(ModelForm):
 class CreateProfileForm(ModelForm):
     class Meta:
         model = Profile
-        fields = ["bio" , "avatar" , "student"]
+        fields = ["bio" , "avatar" ]
 
 
 class EnrollCourseForm(forms.ModelForm):
