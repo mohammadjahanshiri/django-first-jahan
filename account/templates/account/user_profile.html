@@ -1,0 +1,21 @@
+<html>
+    <head>
+
+    
+    </head>
+    <body>
+        {% if messages %}
+        <ul class="messages alert alert-success">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p>bio :{{profile.bio}}</p>
+         <p>phone_numer : {{profile.phone_number}}</p>
+          <p>firstname: {{profile.user.first_name}}</p>
+           <p>lastname: {{profile.user.last_name}}</p>
+            <p>score: {{extended_data.score}}</p>
+    </body>
+
+</html>

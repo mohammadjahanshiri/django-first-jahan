@@ -17,6 +17,6 @@ urlpatterns = [
     path("create_course/" , CreateCoursesView.as_view() , name="create_course"),
     path("create_profile/" , CreateProfileView.as_view() , name="create_profile"),
     path("all_teachers/" , AllTeachersView.as_view() , name="all_teachers"),
-    path("all_courses/" , AllCoursesView.as_view() , name="all_courses"),
+    path("all_courses/<int:pk>/" , AllCoursesView.as_view() , name="all_courses"),
     path("enroll_course/" , EnrollCoursesView.as_view() , name="enroll_courses"),
 ]

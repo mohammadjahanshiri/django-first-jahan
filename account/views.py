@@ -4,7 +4,8 @@ from django.views import View
 from account.forms import UserRegisterForm , LoginForm
 from django.contrib.auth import authenticate , login , logout
 from django.contrib import messages
-
+from django.shortcuts import get_object_or_404
+from student.models import Profile
 
 class RegisterView(View):
 
@@ -38,7 +39,8 @@ class LoginView(View):
         user = authenticate(request , username=request.POST["username"] , password=request.POST["password"])
         if user is not None and user.is_authenticated:
             login(request , user)
-            return redirect("student:create_student")
+            messages.add_message(request , messages.SUCCESS , "login successfully." )
+            return redirect("account:user_profile")
         return render(request , self.html_file , {"form" : self.form , "message" : "password or username is wrong."})
     
 class logoutView(View):
@@ -57,5 +59,16 @@ class DeleteAccountView(View):
             except:
                 return redirect("student:create_student")
 
-        
-            
+
+class ProfileView(View):
+    html_file = "account:user_profile.html"
+    def get(self , request ):
+        if request.user.is_authenticated:
+            profile = get_object_or_404(Profile , user_id=request.user.id)
+            if profile.is_student:
+                etended_data = profile.profile_student
+            else:
+                extended_data = profile.profile_teacher
+            return render(request , self.html_file , {"profile" : profile , "extended_data" : extended_data })
+        else:
+            return redirect("account:user_login")

@@ -23,17 +23,18 @@ class Course(models.Model):
     start_date = models.DateTimeField(blank=True , null=True)
     end_date = models.DateTimeField(blank=True , null=True)
     is_available = models.BooleanField(default=True)
-    teacher = models.ForeignKey(Teachers , on_delete=models.CASCADE , related_name="teacher" ,  blank=True , null=True)
+    students = models.ManyToManyField(Students , related_name="courses_student" , blank=True , null=True)
+    teacher = models.ForeignKey(Teachers , on_delete=models.CASCADE , related_name="courses_teacher" ,  blank=True , null=True)
     def __str__(self):
         return self.title
     
-class EnrollmentCourse(models.Model):
-    courses = models.ManyToManyField(Course  , name="courses" ,  blank=True , null=True )
-    students = models.ManyToManyField(Students  , related_name="enrollmentcourses" ,blank=True , null=True)
-    date_enrolled = models.DateTimeField(auto_now_add=True)
+# class EnrollmentCourse(models.Model):
+#     courses = models.ManyToManyField(Course  , name="courses" ,  blank=True , null=True )
+#     students = models.ManyToManyField(Students  , related_name="enrollmentcourses" ,blank=True , null=True)
+#     date_enrolled = models.DateTimeField(auto_now_add=True)
     
-    def __str__(self):
-        return f"{self.students.fullname} : {self.courses.title}"
+#     def __str__(self):
+#         return f"{self.students.fullname} : {self.courses.title}"
 
     
 class Profile(models.Model):
