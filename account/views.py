@@ -31,7 +31,7 @@ class RegisterView(View):
 class LoginView(View):
 
     form = LoginForm()
-    html_file = "account/user_login.html"
+    html_file = "account/basic.html"
     def get(self , request):
         return render(request , self.html_file , {"form" : self.form})
     
