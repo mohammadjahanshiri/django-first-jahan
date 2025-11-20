@@ -4,7 +4,7 @@ from student.forms import *
 from django.shortcuts import render , redirect , get_object_or_404
 from django.db import IntegrityError
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from rest_framework.response import Response
 
 class AllStudentsView(View):
     html_file = "student/all_student.html"

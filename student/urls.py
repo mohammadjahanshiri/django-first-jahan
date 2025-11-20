@@ -1,6 +1,7 @@
 from django.urls import path
 from student.views import *
 from student.class_view import *
+from student.api import *
 
 app_name = "student"
 
@@ -19,4 +20,10 @@ urlpatterns = [
     path("all_teachers/" , AllTeachersView.as_view() , name="all_teachers"),
     path("all_courses/<int:pk>/" , AllCoursesView.as_view() , name="all_courses"),
     path("enroll_course/" , EnrollCoursesView.as_view() , name="enroll_courses"),
+    path("api/allstudents/" , AllStudentsApi.as_view()),
+    path("api/allstudents/<int:pk>/" , StudentDetailApi.as_view()),
+    path("api/allcourses/" , AllCoursesApi.as_view()),
+    path("api/allcourses/<int:pk>/" , CoursesDetailApi.as_view()),
+    path("api/allcourses/enroll/" , EnrollCorsesApi.as_view()),
+    path("api/profiles/<int:pk>" , ProfileApi.as_view())
 ]
