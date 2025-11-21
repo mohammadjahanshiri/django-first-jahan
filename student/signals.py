@@ -20,7 +20,7 @@ from student.models import *
 #             teachers = instance
 #         )
 
-@receiver(post_save , sender=Students)
+@receiver(post_save , sender=User)
 def CreateStudentSignal(sender , instance , created , **kwargs):
 
     if created:

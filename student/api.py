@@ -40,7 +40,7 @@ class EnrollCorsesApi(APIView):
 
     def post(self,request):
         student = request.user.user_profile.profile_student
-        courses_id = request.data.get("course_id")
+        courses_id = request.data("course_id")
         if not courses_id:
             return Response({
                 "error" : "course_id is not required"
